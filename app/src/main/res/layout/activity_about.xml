@@ -92,7 +92,7 @@
                     android:id="@+id/websiteLink"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="🔗 https://github.com/your-username/your-repo"
+                    android:text="🔗 https://github.com/athirahnz/PowerPeek"
                     android:autoLink="web"
                     android:linksClickable="true"
                     android:textColor="#1E88E5"
