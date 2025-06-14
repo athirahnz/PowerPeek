@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eaeaea">
+
+    <!-- AppBar Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:paddingTop="20dp"
+            android:background="@color/primary"
+            app:title="Power Peek"
+            app:titleTextColor="@android:color/white"
+            app:titleCentered="true"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <ScrollView
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#eaeaea"
+            tools:context=".listView">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:gravity="center_horizontal">
+
+                <!-- App Title -->
+                <TextView
+                    android:id="@+id/textViewTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Electricity Bill Estimator"
+                    android:textColor="#333333"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Input Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="6dp"
+                    android:backgroundTint="#eeeeee">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp"
+                        android:gravity="center_horizontal">
+
+                        <!-- Month Dropdown -->
+                        <Spinner
+                            android:id="@+id/spinnerMonth"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="8dp"
+                            android:prompt="@string/select_month" />
+
+                        <!-- Units Input -->
+                        <EditText
+                            android:id="@+id/editTextUnits"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Enter electricity usage (kWh)"
+                            android:textColorHint="#999999"
+                            android:textColor="#333333"
+                            android:inputType="number"/>
+
+                        <!-- Rebate Label -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Select Rebate (%)"
+                            android:textColor="#333333"
+                            android:textSize="16sp"
+                            android:layout_marginTop="8dp" />
+
+                        <!-- Rebate Radio Buttons -->
+                        <!-- Rebate Row 1 -->
+                        <RadioGroup
+                            android:id="@+id/radioGroup1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/radio0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0%"
+                                android:textColor="#333333" />
+
+                            <RadioButton
+                                android:id="@+id/radio1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1%"
+                                android:textColor="#333333" />
+
+                            <RadioButton
+                                android:id="@+id/radio2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="2%"
+                                android:textColor="#333333" />
+                        </RadioGroup>
+
+                        <!-- Rebate Row 2 -->
+                        <RadioGroup
+                            android:id="@+id/radioGroup2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/radio3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="3%"
+                                android:textColor="#333333" />
+
+                            <RadioButton
+                                android:id="@+id/radio4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="4%"
+                                android:textColor="#333333" />
+
+                            <RadioButton
+                                android:id="@+id/radio5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="5%"
+                                android:textColor="#333333" />
+                        </RadioGroup>
+
+
+                        <!-- Calculate Button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/buttonCalculate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="12dp"
+                            android:onClick="calcBill"
+                            android:text="Calculate Bill"
+                            android:textColor="#FFFFFF" />
+
+                        <!-- Result -->
+                        <TextView
+                            android:id="@+id/textViewResult"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:text="Results will be shown here."
+                            android:textColor="#555555"
+                            android:textSize="16sp"
+                            android:padding="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="#EEEEEE"
+                            android:elevation="2dp" />
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
